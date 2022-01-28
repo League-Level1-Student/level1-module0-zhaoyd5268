@@ -9,26 +9,44 @@ import org.jointheleague.graphical.robot.Robot;
  *    Level 1
  */
 public class Houses {
+	
+	Robot rob = new Robot();
+	
+public void rob(String height) {
+	rob.setWindowColor(Color.BLACK);
+	rob.hide();
+	int heightasint = 0;
+	if (height.equalsIgnoreCase("small")) {
+
+		heightasint=60;
+		rob.setPenColor(Color.BLUE);
+	}
+	if (height.equalsIgnoreCase("medium")) {
+rob.setPenColor(Color.white);
+		heightasint=120;
+	}
+	if (height.equalsIgnoreCase("large")) {
+rob.setPenColor(Color.PINK);
+		heightasint=250;
+	}
+		rob.setSpeed(20);
+		rob.penDown();
+		rob.move(heightasint);
+		rob.turn(90);
+		rob.move(20);
+		rob.turn(90);
+		rob.move(heightasint);
+		rob.setPenColor(Color.GREEN);
+		rob.turn(-90);
+		rob.move(30);
+		rob.turn(-90);
+}
 		
 	public void run() {
 		// Check the recipe to find out what code to put here
-	Robot rob = new Robot();
-	rob.setX(20);
-	rob.setSpeed(20);
-	for (int i = 0; i<9; i++) {
-	rob.setPenColor(Color.orange);
-	rob.penDown();
-	rob.move(100);
-	rob.turn(90);
-	rob.move(20);
-	rob.turn(90);
-	rob.move(100);
-	rob.setPenColor(Color.GREEN);
-	rob.turn(-90);
-	rob.move(30);
-	rob.turn(-90);
 
-	}
-	rob.hide();
-	}
+
+
+			}
 }
+
