@@ -11,41 +11,45 @@ int score = 0;
 int bucketWidth = 50;
 int bucketHeight;
 PImage bucket;
-int y;
-int x;
+int y=50;
+int x=100;
 
 // The setup method is run once when the program starts
 void setup() {
 
   //Set your canvas size
-  
+  size(1000,1200);
   
   //If you are using an image for the bucket, load it and resize it here.
   // A bucket image -  bucket.png - has been provided if you want to use it.
 
-}
 
+}
 // The draw method runs continuously (in a loop) until the program ends
-void draw() {
+void draw(){
   // Set a background color
-  
+  background(30,40,50);
   
   // Draw a raindrop (ellipse) at the top of the screen
-  
-  
+     fill(50, 60, 80);
+    stroke(90, 20, 50);
+    ellipse(x, y,40,70);
   
   // Make the rain fall down the screen.
   // Hint: make a variable for the raindrop's Y position and change it after you
   // draw the raindrop
+  y+=10;
   
-  
+
   // When the rain falls off the bottom of the canvas, 
   // start a new rain drop falling from the top.
   // Each new drop should start at a random position (X position) at the top. 
   // Hint: This code will give you a random number between 0 and the width of your sketch.
   int randomNumber = (int) random(width);
   
-  
+  if (y>=height){
+x=randomNumber-20;
+}
   // Draw a bucket (rectangle or image) at the bottom of the screen. 
   // The bucket's width needs to be stored in the bucketWidth variable.
   
