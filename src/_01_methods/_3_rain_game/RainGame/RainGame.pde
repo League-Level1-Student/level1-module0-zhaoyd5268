@@ -8,8 +8,8 @@
 
 
 int score = 0;
-int bucketWidth = 50;
-int bucketHeight;
+int bucketWidth = 400;
+int bucketHeight=800;
 PImage bucket;
 int y=50;
 int x=100;
@@ -22,14 +22,14 @@ void setup() {
   
   //If you are using an image for the bucket, load it and resize it here.
   // A bucket image -  bucket.png - has been provided if you want to use it.
-
+bucket=loadImage("bucket.png");
+image(bucket, 0, 0);
 
 }
 // The draw method runs continuously (in a loop) until the program ends
 void draw(){
   // Set a background color
   background(30,40,50);
-  
   // Draw a raindrop (ellipse) at the top of the screen
      fill(50, 60, 80);
     stroke(90, 20, 50);
@@ -48,32 +48,39 @@ void draw(){
   int randomNumber = (int) random(width);
   
   if (y>=height){
-x=randomNumber-20;
+
+y=0;
 }
   // Draw a bucket (rectangle or image) at the bottom of the screen. 
   // The bucket's width needs to be stored in the bucketWidth variable.
-  
-  
+ 
+  image(bucket, mouseX, bucketHeight);
+  bucket.resize(150,150);
   // Make the bucket move side-to-side with the mouse. Hint: use mouseX
-  
+
   
   // When the rain drop has fallen to the bucket, call the checkCatch method
   //  to see if the rain drop is in the bucket.
-  
+ checkCatch(x, y);
  
  //This code will display the score on the screen. 
  // Change the color if it does not show up on your background.
-    fill(0, 0, 0);
-    textSize(16);
-    text("Score: " + score, 20, 20);
+    fill(100, 70, 0);
+    textSize(50);
+    text("Score: " + score, 20, 40);
 }
 
 
 // DO NOT CHANGE THIS METHOD - CALL IT FROM THE DRAW METHOD 
-    void checkCatch(int x){
-         if (x > mouseX && x < mouseX+bucketWidth)
-            score++;
-         else if (score > 0) 
-            score--;
-        println("Your score is now: " + score);
-    }
+void checkCatch(int x, int y){
+     if(x > mouseX && x < mouseX+bucketWidth){
+          if(y > mouseY-17 && y < mouseY+30){
+               score++;
+              y = 0; //if the food was eaten, make more food fall from the top
+             int randomNumber = (int) random(width);
+          }
+     }
+     else if (y > height && score > 0){
+          score--;
+     }
+}
