@@ -13,21 +13,27 @@ public class TooManyShapes {
 
 	public static void main(String[] args) {
 		//1. Ask the user how many sides they want their shape to be
-		
+	String sidecount = JOptionPane.showInputDialog("How many sides do you want your shape to be?");
+	int sidenum = Integer.parseInt(sidecount);
 		//2. Ask the user how many shapes they want
-		
+		String shapecount = JOptionPane.showInputDialog("How many shapes do you want there to be?");
+		int shapenum = Integer.parseInt(shapecount);
+		int anglecount = 360%sidenum;
 		//3. Call canMakeShape() and save what is returned into a variable
-		
+		canMakeShape(sidenum);
 		//4. If the shape CAN be drawn
 		
 			//5. Call and save what is returned from calculateTurnAngle()
-		
+		calculateTurnAngle(sidenum);
 			//6. Use drawPolygons() to draw your shape
+		drawPolygons(sidenum, shapenum, anglecount );
 		
 		//7. If the shape CANNOT be drawn 
 			
 			//8. Call notEnoughSides() and print out what is returned 
-		
+		notEnoughSides();
+		System.out.println("I'm sorry we cannot make a shape with that many sides\n"
+				+ "Please enter a number greater than 2");
 	}
 	
 	static int calculateTurnAngle(int numSides) {
