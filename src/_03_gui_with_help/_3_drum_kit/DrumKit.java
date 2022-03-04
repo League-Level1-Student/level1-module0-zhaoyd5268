@@ -4,6 +4,7 @@ package _03_gui_with_help._3_drum_kit;
  *    Level 1
  */
 
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -22,7 +23,8 @@ import javax.swing.JPanel;
 public class DrumKit implements MouseListener {
 	static boolean canPlaySounds = true; // Set this to false if your computer cannot play sounds
 	JLabel drumLabel;
-
+	String snare = "snare.jpg";
+	String drum = "drum.wav";
 	public void run() {
 
 		//  Make a JFrame variable and initialize it using "new JFrame()"
@@ -41,7 +43,7 @@ frame.add(panel);
 		//  Drum Kit recipe package.
 
 		//  Put the name of the drum image file in a String variable.
-String snare = "snare.jpg";
+
 		//  Edit the next line to use your String variable
 		// drumLabel = createLabelImage(drumImageString);
 drumLabel = createLabelImage(snare);
@@ -49,13 +51,14 @@ drumLabel = createLabelImage(snare);
 frame.add(drumLabel);
 		//  Call the pack() method on the frame. 
 		// Run your program. Do you see your drum image?
-frame.pack();
+
 		// Add this MouseListener to drumLabel
-		
+		drumLabel.addMouseListener(this);
 		// *** Write the code in the mouseClicked() method below
 
 		//  Set the layout of the panel to "new GridLayout()"
-
+panel.setLayout(new GridLayout());
+frame.pack();
 		//  Add a cymbal image to make a Drum Kit (one has been provided).
 		//  You will need a different sound to go with this image.
 		//  Remember to add this MouseListener to it. Run the program.
@@ -74,7 +77,9 @@ frame.pack();
 		// download another drum sound (.wav) and drop it into the Drum Kit package.
 		// You can find sounds on freesound.org, and to download from there, you must log in 
 		// Ask your teacher for The League's login information.
-
+		if (labelClicked==drumLabel) {
+			playSound(drum);
+		}
 		//  If the user clicks on the drumImage...use the playSound method to play the drum sound.
 		//  Test to see if it works before moving on.
 
@@ -96,7 +101,7 @@ frame.pack();
 	public static synchronized void playSound(String fileName) {
 		if (canPlaySounds) {
         	// Note: use .wav files  
-			String path = "src/_02_gui_with_help/_3_drum_kit/";
+			String path = "src/_03_gui_with_help/_3_drum_kit/";
 			new Thread(new Runnable() {
 				public void run() {
 					try {

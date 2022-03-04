@@ -21,10 +21,11 @@ public class BodyPartQuiz {
 	// package,or if you prefer, get celebrity photos from the Internet,
 	// place them in the recipe package(body_part_quiz), and change the names below.
 
-	String firstImage = "src/_05_body_part_quiz/arnold.jpeg";
-	String secondImage = "src/_05_body_part_quiz/leonardo.jpeg";
-	String thirdImage = "src/_05_body_part_quiz/morgan.jpeg";
-	String fourthImage = "src/_05_body_part_quiz/jack.jpeg";
+	String path = "src/_03_gui_with_help/_4_body_part_quiz/";
+	String firstImage = "arnold.jpeg";
+	String secondImage = "leonardo.jpeg";
+	String thirdImage = "morgan.jpeg";
+	String fourthImage = "jack.jpeg";
 
 	JFrame window = new JFrame();
 	JPanel panel = new JPanel();
@@ -51,25 +52,53 @@ public class BodyPartQuiz {
 	private void startQuiz() {
 
 		// 1. Make an int variable to hold the score.
-
+		int score = 0;
 		// 2. Set the size of the window in the initializeGui() method 
 
 		// 4. Ask the user who this person is and store their answer
 		String guess = JOptionPane.showInputDialog("who is this?");
-
+		String guess1 = JOptionPane.showInputDialog("who is this?");
+		String guess2 = JOptionPane.showInputDialog("who is this?");
+		String guess3 = JOptionPane.showInputDialog("who is this?");
 		// 5. Check their answer. If they guessed correctly:
 		// -- Tell them they are right and increase the score by 1
-
+		if (guess.equalsIgnoreCase("arnold")) {
+			score+=1;
+		} else {
+			JOptionPane.showMessageDialog(null, "You are wrong. This is Arnold.");
+			score-=1;
+			}
+		showNextImage();
+		if (guess1.equalsIgnoreCase("arnold")) {
+			score+=1;
+		} else {
+			JOptionPane.showMessageDialog(null, "You are wrong. This is Leonardo.");
+			score-=1;
+		}
+		showNextImage();
+		if (guess2.equalsIgnoreCase("arnold")) {
+			score+=1;
+		} else {
+			JOptionPane.showMessageDialog(null, "You are wrong. This is Morgan.");
+			score-=1;	
+			}
+		showNextImage();
+		if (guess3.equalsIgnoreCase("arnold")) {
+			score+=1;
+		} else {
+			JOptionPane.showMessageDialog(null, "You are wrong. This is Jack.");
+			score-=1;
+			}
 		// 6. Otherwise:
 		// -- Tell them they are wrong and who the person is
 
 		// 7. Use the showNextImage() method below to get the next image
-		showNextImage();
+		
 
 		// 8. .... repeat 4-7 for all your images.....
 
 		// 9. Show them their current score
-
+JOptionPane.showMessageDialog(null, "Your score was " +score + ". Great job! Enjoy the rest of your day.");
 	}
 
 	public void showNextImage() {
@@ -88,13 +117,13 @@ public class BodyPartQuiz {
 	Iterator<JLabel> imageIterator;
 
 	private void initializeImageList() {
-		JLabel imageLabel = loadImage(firstImage);
+		JLabel imageLabel = loadImage(path+firstImage);
 		imageList.add(imageLabel);
-		imageLabel = loadImage(secondImage);
+		imageLabel = loadImage(path+secondImage);
 		imageList.add(imageLabel);
-		imageLabel = loadImage(thirdImage);
+		imageLabel = loadImage(path+thirdImage);
 		imageList.add(imageLabel);
-		imageLabel = loadImage(fourthImage);
+		imageLabel = loadImage(path+fourthImage);
 		imageList.add(imageLabel);
 	}
 
